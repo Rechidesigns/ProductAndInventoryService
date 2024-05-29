@@ -218,3 +218,20 @@ SIMPLE_JWT = {
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
     'TOKEN_TYPE_CLAIM': 'typ',
 }
+
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+#     'ROTATE_REFRESH_TOKENS': False,
+#     'BLACKLIST_AFTER_ROTATION': True,
+#     'ALGORITHM': 'HS256',
+#     'SIGNING_KEY': 'YcxjOMewdFfeZFQm5iGAYxTjR23Z93rLbyZucty3',  # Update to match your secret key
+#     'VERIFYING_KEY': None,
+#     'AUDIENCE': 'https://localhost:7202',
+#     'ISSUER': 'https://localhost:7202',
+#     'USER_ID_FIELD': 'id',
+#     'USER_ID_CLAIM': 'user_id',
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     ...
+# }
