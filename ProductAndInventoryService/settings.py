@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'ProductAndInventoryService.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'ProductAndInventoryDb',
+        'NAME': config('MYSQL_SERVER_USER'),
         'USER': '',  # Leave empty if using Trusted Connection
         'PASSWORD': '',  # Leave empty if using Trusted Connection
-        'HOST': 'DESKTOP-URRGOIT',
+        'HOST': config('MYSQL_SERVER_HOST'),
         'PORT': '',
 
         'OPTIONS': {
