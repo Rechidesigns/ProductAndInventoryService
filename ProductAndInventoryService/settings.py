@@ -13,6 +13,7 @@ from pathlib import Path
 from decouple import config
 import os
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -195,4 +196,25 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]",
     "AUTHENTICATION_WHITELIST": [],
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # TokenLifeTime is 30 minutes
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': 'YcxjOMewdFfeZFQm5iGAYxTjR23Z93rLbyZucty3',  # SecretKey from your .NET Core service
+    'ISSUER': 'https://localhost:7202',  # ValidIssuer
+    'AUDIENCE': 'https://localhost:7202',  # ValidAudience
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'typ',
 }
