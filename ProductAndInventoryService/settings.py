@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'ProductsAndInventory'
 ]
 
 MIDDLEWARE = [
@@ -164,7 +165,6 @@ CORS_ALLOW_HEADERS = (
     "accept-encoding",
     "access-control-allow-origin",
     "content-disposition",
-    "guestuserid",
 )
 
 CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS").split(" ")
