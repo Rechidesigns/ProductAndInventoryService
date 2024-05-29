@@ -1,0 +1,44 @@
+.vn
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+
+# Django stuff:
+*.py[cod]
+__pycache__/
+*.so
+*.mo
+*.pyo
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+.VENV/
+ENV.bak/
+.venv.bak/
+
+# Django secret key and settings
+.secret_key
+.settings_local.py
+.env
+
+# Static and media files
+/static/
+media/
+
+
+
+# VS Code
+.vscode/
+
+
+# Windows
+Thumbs.db
