@@ -31,13 +31,13 @@ class Product(BaseModel):
         
         
 class Review (BaseModel):
-    Product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.UUIDField()
     rating = models.PositiveIntegerField()
     comment = models.CharField(max_length=300)
     
     def __str__(self):
-        return f'Review {self.id} for {self.product.name} by user {self.userid}'
+        return f'Review {self.id} for {self.product.name} by user {self.user}'
     class Meta:
         verbose_name_plural = "Reviews"
             

@@ -11,10 +11,10 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name', 'description', 'price', 'category', 'userid']
+        fields = ['id', 'name', 'description', 'price', 'category', 'user']
 
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ['id', 'product', 'userid', 'rating', 'comment']
+        fields = ['id', 'product', 'user', 'rating', 'comment']
