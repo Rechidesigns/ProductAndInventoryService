@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from rest_framework import viewsets, permissions
 from .models import Review, Product, Category
 from .serializers import ReviewSerializer, ProductSerializer, CategorySerializer
-from rest_framework.views import generics
-
+from rest_framework import generics, permissions
 
 class CategoryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
@@ -21,8 +19,8 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
-        user_id = self.request.user.id
-        serializer.save(user_id=user_id)
+        user = self.request.user.id
+        serializer.save(user=user)
 
 class ProductDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
@@ -37,8 +35,8 @@ class ReviewListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        userid = self.request.user.id
-        serializer.save(userid=userid)
+        user = self.request.user.id
+        serializer.save(user=user)
 
 class ReviewDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
