@@ -3,9 +3,9 @@ from .views import ReviewListCreateAPIView, ReviewDetailAPIView, CategoryListCre
 
 urlpatterns = [
     path('reviews/', ReviewListCreateAPIView.as_view(), name='review-list-create'),
-    path('reviews/<int:pk>/', ReviewDetailAPIView.as_view(), name='review-detail'),
+    path('reviews/<uuid:review_id>/', ReviewDetailAPIView.as_view(), name='review-detail'),
     path('categories/', CategoryListCreateAPIView.as_view(), name='category-list-create'),
-    path('categories/<int:pk>/', CategoryDetailAPIView.as_view(), name='category-detail'),
+    path('categories/<uuid:category_id>/', CategoryDetailAPIView.as_view(), name='category-detail'),
     path('products/', ProductListCreateAPIView.as_view(), name='product-list-create'),
-    path('products/<int:pk>/', ProductDetailAPIView.as_view(), name='product-detail'),
+    path('products/<uuid:product_id>/', ProductDetailAPIView.as_view(), name='product-detail'),
 ]

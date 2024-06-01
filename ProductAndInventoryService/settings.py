@@ -200,15 +200,43 @@ SPECTACULAR_SETTINGS = {
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # TokenLifeTime is 30 minutes
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': 'YcxjOMewdFfeZFQm5iGAYxTjR23Z93rLbyZucty3',  # SecretKey from your .NET Core service
-    'ISSUER': 'https://localhost:7202',  # ValidIssuer
-    'AUDIENCE': 'https://localhost:7202',  # ValidAudience
+    'SIGNING_KEY': 'YcxjOMewdFfeZFQm5iGAYxTjR23Z93rLbyZucty3',  # Match this with .NET SecretKey
+    'VERIFYING_KEY': None,
+    'AUDIENCE': 'https://localhost:7202',  # Match this with .NET ValidAudience
+    'ISSUER': 'https://localhost:7202',    # Match this with .NET ValidIssuer
+
     'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user',
+
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'typ',
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),  # TokenLifeTime is 30 minutes
+#     'ALGORITHM': 'HS256',
+#     'SIGNING_KEY': 'YcxjOMewdFfeZFQm5iGAYxTjR23Z93rLbyZucty3',  # SecretKey from your .NET Core service
+#     'ISSUER': 'https://localhost:7202',  # ValidIssuer
+#     'AUDIENCE': 'https://localhost:7202',  # ValidAudience
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+#     'TOKEN_TYPE_CLAIM': 'typ',
+# }
 
 
 REST_FRAMEWORK = {
