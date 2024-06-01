@@ -21,7 +21,7 @@ class Product(BaseModel):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user = models.UUIDField()
+    #user = models.UUIDField()
     image = models.ImageField(upload_to="products/", null=True)
 
     def __str__(self):
@@ -32,12 +32,15 @@ class Product(BaseModel):
         
 class Review (BaseModel):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    user = models.UUIDField()
+    #user = models.UUIDField()
     rating = models.PositiveIntegerField()
     comment = models.CharField(max_length=300)
     
     def __str__(self):
-        return f'Review {self.id} for {self.product.name} by user {self.user}'
+        return self.product
+    
+    # def __str__(self):
+    #     return f'Review {self.id} for {self.product.name} by user {self.user}'
     class Meta:
         verbose_name_plural = "Reviews"
             
