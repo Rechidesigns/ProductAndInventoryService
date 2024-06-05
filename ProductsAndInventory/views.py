@@ -149,6 +149,9 @@ class ReviewDetailView(APIView):
 
 
 
+
+
+
 # class CategoryListCreateAPIView(generics.ListCreateAPIView):
 #     queryset = Category.objects.all()
 #     serializer_class = CategorySerializer
