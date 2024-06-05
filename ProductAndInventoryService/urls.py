@@ -53,7 +53,7 @@ urlpatterns = [
         name="swagger-ui",
     ),
     path('admin/', admin.site.urls),
-    path("api/v1/general/", include("ProductsAndInventory.urls")),
+    path("api/v1/products/", include("ProductsAndInventory.urls")),
 ]
 
 

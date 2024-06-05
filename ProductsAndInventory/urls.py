@@ -4,11 +4,11 @@ from .views import CategoryView, CategoryDetailView, ProductView, ProductDetailV
 
 urlpatterns = [
     path('categories/', CategoryView.as_view()),
-    path('categories/<str:uuid>/', CategoryDetailView.as_view()),
+    path('categories/<uuid:category_id>/', CategoryDetailView.as_view()),
     path('products/', ProductView.as_view()),
-    path('products/<str:uuid>/', ProductDetailView.as_view()),
+    path('products/<uuid:products_id>/', ProductDetailView.as_view()),
     path('reviews/', ReviewView.as_view()),
-    path('reviews/<str:uuid>/', ReviewDetailView.as_view()),
+    path('reviews/<uuid:review_id>/', ReviewDetailView.as_view()),
 ]
 
 
