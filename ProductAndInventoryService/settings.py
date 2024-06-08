@@ -34,7 +34,8 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '*']
 
 
 # Application definition
@@ -97,20 +98,32 @@ WSGI_APPLICATION = 'ProductAndInventoryService.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': config('MYSQL_SERVER_USER'),
+#         'USER': '',  # Leave empty if using Trusted Connection
+#         'PASSWORD': '',  # Leave empty if using Trusted Connection
+#         'HOST': config('MYSQL_SERVER_HOST'),
+#         'PORT': '',
+
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'trusted_connection': 'yes',
+#             'extra_params': 'TrustServerCertificate=yes;',
+#         },
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': config('MYSQL_SERVER_USER'),
-        'USER': '',  # Leave empty if using Trusted Connection
-        'PASSWORD': '',  # Leave empty if using Trusted Connection
-        'HOST': config('MYSQL_SERVER_HOST'),
-        'PORT': '',
-
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'trusted_connection': 'yes',
-            'extra_params': 'TrustServerCertificate=yes;',
-        },
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
