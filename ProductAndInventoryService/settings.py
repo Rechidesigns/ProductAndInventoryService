@@ -98,35 +98,38 @@ WSGI_APPLICATION = 'ProductAndInventoryService.wsgi.application'
 # }
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'mssql',
-#         'NAME': config('MYSQL_SERVER_USER'),
-#         'USER': '',  # Leave empty if using Trusted Connection
-#         'PASSWORD': '',  # Leave empty if using Trusted Connection
-#         'HOST': config('MYSQL_SERVER_HOST'),
-#         'PORT': '',
-
-#         'OPTIONS': {
-#             'driver': 'ODBC Driver 17 for SQL Server',
-#             'trusted_connection': 'yes',
-#             'extra_params': 'TrustServerCertificate=yes;',
-#         },
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'db'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'ENGINE': 'mssql',
+        'NAME': config('MYSQL_SERVER_USER'),
+        'USER': '',  # Leave empty if using Trusted Connection
+        'PASSWORD': '',  # Leave empty if using Trusted Connection
+        'HOST': config('MYSQL_SERVER_HOST'),
+        'PORT': '',
+
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            'trusted_connection': 'yes',
+            'extra_params': 'TrustServerCertificate=yes;',
+        },
     }
 }
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get('POSTGRES_NAME'),
+#         'USER': os.environ.get('POSTGRES_USER'),
+#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#         'HOST': os.environ.get('POSTGRES_HOST_IP', '172.19.0.2'),
+#         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+#     }
+# }
+
+# import os
+
+# print(os.environ.get('POSTGRES_HOST_IP'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
