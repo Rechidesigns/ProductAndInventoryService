@@ -14,6 +14,7 @@ from decouple import config
 import os
 from pathlib import Path
 from datetime import timedelta
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -98,34 +99,38 @@ WSGI_APPLICATION = 'ProductAndInventoryService.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME': config('MYSQL_SERVER_USER'),
-        'USER': '',  # Leave empty if using Trusted Connection
-        'PASSWORD': '',  # Leave empty if using Trusted Connection
-        'HOST': config('MYSQL_SERVER_HOST'),
-        'PORT': '',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': config('MYSQL_SERVER_USER'),
+#         'USER': '',  # Leave empty if using Trusted Connection
+#         'PASSWORD': '',  # Leave empty if using Trusted Connection
+#         'HOST': config('MYSQL_SERVER_HOST'),
+#         'PORT': '',
 
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'trusted_connection': 'yes',
-            'extra_params': 'TrustServerCertificate=yes;',
-        },
-    }
-}
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'trusted_connection': 'yes',
+#             'extra_params': 'TrustServerCertificate=yes;',
+#         },
+#     }
+# }
 
 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.environ.get('POSTGRES_NAME'),
-#         'USER': os.environ.get('POSTGRES_USER'),
-#         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-#         'HOST': os.environ.get('POSTGRES_HOST_IP', '172.19.0.2'),
-#         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+#         'NAME': 'postgres',
+#         'USER': 'admin_rechi',
+#         'PASSWORD': 'Qwerty123',
+#         'HOST': 'rechi-postgresql.postgres.database.azure.com',
+#         'PORT': '5432',
 #     }
 # }
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+}
 
 # import os
 
